@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous 5-Axis Robotic Arm | Joshua Enz</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
+            --text-muted: #64748b;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+            text-decoration: underline;
+        }
+
+        /* Typography */
+        h1 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* GitHub Action Button */
+        .action-bar {
+            margin-bottom: 1.25rem;
+        }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: #0f172a;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+        }
+
+        .github-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Skill Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .tag {
+            background-color: #eff6ff;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        /* Hero Video Container */
+        .main-media {
+            width: 100%;
+            height: 420px;
+            background-color: #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            border: 1px solid #cbd5e1;
+        }
+
+        .main-media video, .main-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Content Card Sections */
+        .section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Media Layouts */
+        .img-single {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            margin: 1rem 0;
+            display: block;
+        }
+
+        .img-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .img-grid-2 img {
+            width: 100%;
+            height: 240px;
+            object-fit: contain;
+            background: #f1f5f9;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* Code Snippet Formatting */
+        code {
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            background-color: #f1f5f9;
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.88em;
+            color: #0f172a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Back Navigation -->
+        <a href="index.html" class="back-link">&larr; Back to Featured Projects</a>
+
+        <!-- Header -->
+        <h1>Autonomous 5-Axis Robotic Arm</h1>
+        <div class="subtitle">3D-Printed Manipulator with ROS 2 Humble, MoveIt 2 & YOLOv8 Vision Integration</div>
+
+        <!-- External Links -->
+        <div class="action-bar">
+            <a href="https://github.com/angryjosh12/5AxisRoboticArm" target="_blank" rel="noopener noreferrer" class="github-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                View Source Code on GitHub
+            </a>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="tags">
+            <span class="tag">SolidWorks</span>
+            <span class="tag">ROS 2 (Humble)</span>
+            <span class="tag">MoveIt 2</span>
+            <span class="tag">Gazebo</span>
+            <span class="tag">YOLOv8</span>
+            <span class="tag">FEA Analysis</span>
+            <span class="tag">ESP32</span>
+        </div>
+
+        <!-- Video Demo Section -->
+        <div class="main-media">
+            <video autoplay loop muted playsinline poster="assets/robotic-arm-rviz-urdf.png">
+                <source src="assets/robotic-arm-demo.mp4" type="video/mp4">
+                <img src="assets/robotic-arm-rviz-urdf.png" alt="ROS 2 Workspace and Kinematics">
+            </video>
+        </div>
+
+        <!-- Overview Section -->
+        <div class="section">
+            <h2>Project Overview</h2>
+            <p>Designed, analyzed, and built a custom 5-axis robotic arm designed for desktop pick-and-place automation. The physical structure was designed for 3D printing in SolidWorks. The software integrates ROS 2 Humble, MoveIt 2 trajectory planning, custom ESP32 communication loop, and top-down YOLOv8 computer vision mapping, using Gazebo to simulate motion prior to physical integration.</p>
+            <img src="assets/robotic-arm-cad-assembly.png" alt="SolidWorks CAD Assembly" class="img-single" style="max-height: 450px; object-fit: contain; background: #f8fafc;">
+            <div class="caption">SolidWorks 3D CAD Assembly of the 5-DOF Articulated Manipulator</div>
+        </div>
+
+        <!-- Mechanical & Mechanics Section -->
+        <div class="section">
+            <h2>Mechanical Design & Static Load Analysis</h2>
+            <ul>
+                <li><strong>Static Mechanics & Torque Calculations:</strong> Calculated maximum link bending moments and joint torques under full horizontal reach to select high-torque bus servos (STS-3215 12V).</li>
+                <li><strong>Internal Bearing Seats:</strong> Designed custom base mounts and internal bearing placements to absorb radial and axial loads, preventing axis slop while allowing for upside-down mounting.</li>
+            </ul>
+
+            <img src="assets/robotic-arm-fbd-load-analysis.png" alt="Free Body Diagram and Torque Analysis" class="img-single">
+            <div class="caption">Analytical Free-Body Diagram (FBD) & Joint Moment Calculations under Full Reach</div>
+
+            <img src="assets/robotic-arm-base-cross-section.png" alt="Base Mechanism Cross Section" class="img-single" style="max-height: 320px; object-fit: contain; background: #f8fafc;">
+            <div class="caption">Cross-Sectional Section View Detailing Dual Radial Bearing Support and Servo Drive Interface</div>
+        </div>
+
+        <!-- Structural Simulation Section -->
+        <div class="section">
+            <h2>Finite Element Analysis (FEA)</h2>
+            <p>Validated structural integrity in SolidWorks FEA under maximum payload conditions to ensure acceptable Factor of Safety (FOS) margins prior to fabrication.</p>
+
+            <div class="img-grid-2">
+                <div>
+                    <img src="assets/robotic-arm-fea-linkage.png" alt="Linkage Structural FEA">
+                    <div class="caption">Linkage Stress Contour (Min FOS = 1.0 under shock load)</div>
+                </div>
+                <div>
+                    <img src="assets/robotic-arm-fea-gripper.png" alt="Gripper Mechanism FEA">
+                    <div class="caption">Wrist Mount & End-Effector Stress Analysis</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROS 2 & Controls Section -->
+        <div class="section">
+            <h2>ROS 2 Kinematics & Motion Control</h2>
+            <ul>
+                <li><strong>URDF Modeling:</strong> Exported the CAD assembly into a URDF description via <code>sw2urdf</code> while maintaining accurate transform trees, mass inertia tensors, and joint limits. Full source code is available in the <a href="https://github.com/angryjosh12/5AxisRoboticArm" target="_blank" rel="noopener noreferrer">5AxisRoboticArm GitHub repository</a>.</li>
+                <li><strong>MoveIt 2 Trajectory Solvers:</strong> Configured motion planning, fixed end-effector reference frames, and resolved mimic-joint simulation lockups using dummy links.</li>
+                <li><strong>Containerized Workspace:</strong> Developed inside an Ubuntu 22.04 container via Distrobox on an Arch Linux host.</li>
+                <li><strong>Custom ESP32 Serial Bridge & Firmware:</strong> Programmed an ESP32 in C++ to parse USB-UART motion packets <code>(id:pos:speed:accel)</code> and return live hardware diagnostics. Broadcasted health metrics over a dedicated <code>/esp32_telemetry</code> topic, allowing a decoupled <code>SafetyMonitorNode</code> to actively monitor voltage levels and servo temperatures independently from motion planning routines.</li>
+            </ul>
+
+            <img src="assets/robotic-arm-rviz-urdf.png" alt="RViz Workspace and URDF Code" class="img-single">
+            <div class="caption">ROS 2 Humble Workspace: Live RViz2 Kinematic Validation paired with URDF Configuration</div>
+        </div>
+
+        <!-- Computer Vision Section -->
+        <div class="section">
+            <h2>Computer Vision</h2>
+            <p>Integrated a camera feed with a pre-trained YOLOv8 object detection model. The node captures target objects in real-time, extracts bounding box centroids, and computes spatial target coordinates (X, Y) relative to the manipulator's base frame for autonomous pick-and-place routines.</p>
+
+            <img src="assets/robotic-arm-yolo-detection.png" alt="YOLO Spatial Detection Output" class="img-single" style="max-height: 380px; object-fit: contain; background: #202020;">
+            <div class="caption">Spatial Target Pose Output ($X = -0.24\text{m}, Y = 0.20\text{m}$) Generated from Vision Pipeline</div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Joshua Enz | Mechanical Engineering</p>
+    </footer>
+
+</body>
+</html>
