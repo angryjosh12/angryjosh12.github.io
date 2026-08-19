@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEX Robotics Competition Stack | Joshua Enz</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
+            --text-muted: #64748b;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+            text-decoration: underline;
+        }
+
+        /* Typography */
+        h1 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* Action Bar / External Links */
+        .action-bar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: #0f172a;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+        }
+
+        .github-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Skill Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .tag {
+            background-color: #eff6ff;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        /* Hero Image Container */
+        .main-media {
+            width: 100%;
+            height: 420px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            border: 1px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Content Card Sections */
+        .section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Media Layouts */
+        .img-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .img-grid-2 img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* Code Formatting */
+        code {
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            background-color: #f1f5f9;
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.88em;
+            color: #0f172a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Back Navigation -->
+        <a href="index.html" class="back-link">&larr; Back to Featured Projects</a>
+
+        <!-- Header -->
+        <h1>VEX Robotics Competition</h1>
+        <div class="subtitle">Lead Design & Build Engineer | 9-Year Competitive Veteran, Technical Mentor & 4x World Qualifier</div>
+
+        <!-- External Link Action Bar -->
+        <div class="action-bar">
+            <a href="https://github.com/angryjosh12/vex2024-2025" target="_blank" rel="noopener noreferrer" class="github-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View 2024–2025 Repo
+            </a>
+            <a href="https://github.com/angryjosh12/vex2023-2024" target="_blank" rel="noopener noreferrer" class="github-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View 2023–2024 Repo
+            </a>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="tags">
+            <span class="tag">Lead Design & Build Engineer</span>
+            <span class="tag">Lead Testing Engineer</span>
+            <span class="tag">Technical Mentor</span>
+            <span class="tag">9 Years Competitive Experience</span>
+            <span class="tag">4x VEX Worlds Qualifier</span>
+            <span class="tag">Budget & Resource Management</span>
+            <span class="tag">Autodesk Inventor CAD</span>
+            <span class="tag">LemLib & PROS C++</span>
+            <span class="tag">Failure Analysis & Repair</span>
+        </div>
+
+        <!-- Hero Media Banner -->
+        <div class="main-media">
+            <img src="assets/vex-worlds-robot.png" alt="Final Over Under Robot competing at VEX Worlds">
+        </div>
+
+        <!-- Project Overview Section -->
+        <div class="section">
+            <h2>Project Overview & Leadership Experience</h2>
+            <p>Brought 9 total years of competitive robotics experience spanning FIRST LEGO League (2 years), VEX IQ (3 years, 2x World Championship Qualifier), and VEX Robotics Competition (4 years, 2x World Championship Qualifier). As the <strong>Lead Design, Build, and Testing Engineer</strong>, oversaw physical fabrication, 3D CAD modeling, and field validation across the majority of my time in competitive robotics.</p>
+        </div>
+
+        <!-- Budget Constraints & Resource Optimization Section -->
+        <div class="section">
+            <h2>Resource Optimization & Fiscal Constraints</h2>
+            <p>Operating under strict financial constraints required careful resource management, long-term fiscal planning, and creative problem solving to keep the team competitive with legacy hardware:</p>
+            <ul>
+                <li><strong>Strict Annual Allocation:</strong> Managed a tight base budget of ~$1,000 per team annually, covering all registration fees, replacement hardware, and new component purchases.</li>
+                <li><strong>Post-Worlds Deficit Recovery:</strong> After paying the ~$1,800 registration fee for the 2023–2024 VEX World Championship from accumulated rollover savings, the team account was left with a remaining balance of just $4 entering the 2024–2025 season.</li>
+                <li><strong>Strategic Resource Allocation:</strong> Pursued external sponsors and coordinated with affiliated middle and elementary school teams holding surplus funds to help cover World Championship entry fees. Any additional new hardware required out-of-pocket funding, heavily constraining design choices.</li>
+                <li><strong>Design for Refurbishment:</strong> Prioritized non-destructive mechanical assembly methods whenever possible, enabling critical electronics, actuators, and structural channels to be salvaged and re-engineered across multiple seasons.</li>
+            </ul>
+        </div>
+
+        <!-- Software Architecture & Mentorship Section -->
+        <div class="section">
+            <h2>Software Architecture & Engineering Mentorship</h2>
+            <p>Balanced hands-on software development with team mentorship to build reliable autonomous stacks and preserve program knowledge:</p>
+            <ul>
+                <li><strong>2023–2024 Lead Programmer:</strong> Created the entire PROS software architecture for Over Under, writing modular C++ subsystem libraries (<code>drive.cpp</code>, <code>catapult.cpp</code>, <code>intake.cpp</code>) using direct voltage control and motor encoders for reliable autonomous routines.</li>
+                <li><strong>2024–2025 Mentorship:</strong> Onboarded an incoming team programmer with a Python background. To lower the learning curve under tight competition deadlines, deliberately streamlined the codebase into a single monolithic file (<code>main.cpp</code>) while teaching C++, PROS, and LemLib to establish a Cartesian tracking system using odometry coordinates (X, Y, &theta;).</li>
+                <li><strong>Managing Real-World Odometry Drift:</strong> Designed autonomous paths using PID correction and mechanical field resets (forcing the robot against fixed perimeter structures into a known pose) to compensate for wheel slip without perimeter vision/distance sensors.</li>
+            </ul>
+        </div>
+
+        <!-- 2024-2025 Season Section -->
+        <div class="section">
+            <h2>2024–2025 High Stakes: Mechanical Design & Team Training</h2>
+            <p>Responsible for full CAD design, physical build execution, and testing for Team 14012N, while actively mentoring team members in standard VEX fabrication techniques, testing methods, and software:</p>
+            <ul>
+                <li><strong>Building & Testing Mentorship:</strong> Taught incoming team members proper framing, structural alignment, gear spacing, and systematic testing procedures to ensure physical reliability on the field.</li>
+                <li><strong>Pneumatic Mobile Goal Clamp:</strong> Designed and fabricated a rear clamping assembly powered by pneumatic cylinders to lock mobile goal bases firmly against the frame during fast pivot turns.</li>
+                <li><strong>Elevated Chain Conveyor Intake:</strong> Modeled and assembled a belt-driven chain intake using silicone flex wheels to pull rings off tile floors and score them onto goal stakes.</li>
+                <li><strong>3D CAD Modeling:</strong> Developed complete 3D assembly models in Autodesk Inventor to lower overall weight, allow fast and effective field maneuvering, and verify frame stiffness prior to physical fabrication.</li>
+            </ul>
+
+            <div class="img-grid-2">
+                <div>
+                    <img src="assets/vex-high-stakes-robot.png" alt="VEX High Stakes Robot on Match Field">
+                    <div class="caption">Final High Stakes Robot (Team 14012N) on Competition Field</div>
+                </div>
+                <div>
+                    <img src="assets/vex-cad-model.png" alt="Autodesk Inventor CAD Assembly Model">
+                    <div class="caption">Full Assembly 3D Model in Autodesk Inventor</div>
+                </div>
+                <div>
+                    <img src="assets/vex-mogo-clamp.png" alt="Pneumatic Mobile Goal Clamp Close-up">
+                    <div class="caption">Pneumatic MoGo Clamp Securing Goal Base</div>
+                </div>
+                <div>
+                    <img src="assets/vex-intake-mechanism.png" alt="Conveyor Belt Intake Detail">
+                    <div class="caption">Elevated Chain Conveyor & Motor Gear Box Detail</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2023-2024 Season Section -->
+        <div class="section">
+            <h2>2023–2024 Over Under: Iterative Builds, Failure Analysis & VEX Worlds</h2>
+            <p>Led Team 14012H as Lead Designer, Lead Programmer, and Lead Tester through three complete mechanical iterations, diagnosing structural failures under competition stress:</p>
+            <ul>
+                <li><strong>Stress Fracture Repair:</strong> Heavy repetitive launcher band tension combined with hard stop impacts fractured aluminum C-channel beams during competition. Diagnosed the fatigue points and reinforced the main structural frame geometry.</li>
+                <li><strong>Polycarbonate Material Failure:</strong> High-impact collisions snapped and bent Lexan flaps in half during match play. Extended the main base frame to provide direct structural support out to the edge of the polycarbonate flaps.</li>
+                <li><strong>Iterative World Championship Assembly:</strong> Evolved the robot from early heavy prototypes into a compact, highly optimized build—overhauling and simplifying subsystems wherever possible to maximize on-field reliability at the <strong>VEX Robotics World Championship</strong>.</li>
+            </ul>
+
+            <div class="img-grid-2">
+                <div>
+                    <img src="assets/vex-worlds-robot.png" alt="Final Over Under Robot at VEX World Championship">
+                    <div class="caption">Final Competition Assembly at the VEX World Championship</div>
+                </div>
+                <div>
+                    <img src="assets/vex-stress-crack.png" alt="Close-up of Structural Metal Stress Fracture">
+                    <div class="caption">Structural Fatigue Crack Formed in C-Channel from Band Tension & Impact Slamming</div>
+                </div>
+                <div>
+                    <img src="assets/vex-lexan-bracket.png" alt="Custom Hand-Bent Metal Bracket and Lexan Flap">
+                    <div class="caption">Hand-Bent Metal Bracket Reinforcement for High-Impact Polycarbonate Flaps</div>
+                </div>
+                <div>
+                    <img src="assets/vex-early-vs-final.png" alt="Side-by-Side Comparison of Early and Later Chassis Iterations">
+                    <div class="caption">Build Progression: Early Heavy Prototype Chassis vs. Final Compact World Championship Assembly</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Joshua Enz | Mechanical Engineering</p>
+    </footer>
+
+</body>
+</html>
