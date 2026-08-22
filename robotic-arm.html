@@ -104,22 +104,26 @@
             border-radius: 6px;
         }
 
-        /* Hero Video Container */
-        .main-media {
-            width: 100%;
-            height: 420px;
-            background-color: #e2e8f0;
-            border-radius: 12px;
+        /* Hero Video / Media Container */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             overflow: hidden;
-            margin-bottom: 2.5rem;
+            border-radius: 12px;
             border: 1px solid #cbd5e1;
+            margin-bottom: 2.5rem;
+            background-color: #000000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        .main-media video, .main-media img {
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
+            border: 0;
         }
 
         /* Content Card Sections */
@@ -237,11 +241,13 @@
         </div>
 
         <!-- Video Demo Section -->
-        <div class="main-media">
-            <video autoplay loop muted playsinline poster="assets/robotic-arm-rviz-urdf.png">
-                <source src="assets/robotic-arm-demo.mp4" type="video/mp4">
-                <img src="assets/robotic-arm-rviz-urdf.png" alt="ROS 2 Workspace and Kinematics">
-            </video>
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/CL-YGt1rBAs?rel=0" 
+                title="Autonomous 5-Axis Robotic Arm Live Demo" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
         </div>
 
         <!-- Overview Section -->
